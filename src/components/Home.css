@@ -1,0 +1,135 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #fdfaf4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100vw;
+  height: 100vh; /* Changed from min-height */
+  background-color: #fdfaf4;
+  padding-top: 100px;
+  padding-bottom: 0; /* Remove bottom padding */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  margin-bottom: 0; /* Prevent gap */
+}
+
+.hero-content {
+  width: 90%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 9.5rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-size: 2.25rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-button {
+  background-color: #003f6b;
+  color: white;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #002f4f;
+}
+
+/* Overview Section */
+.overview {
+  background-color: #fdfaf4;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 4rem 1rem;
+}
+
+.card {
+  background: #fcfcfa;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  flex: 1 1 300px;
+  max-width: 350px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Spotlight Section */
+.spotlight {
+  background-color: #fdfaf4;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.spotlight h2,
+.spotlight p {
+  text-align: center;
+  max-width: 800px;
+}
+
+.spotlight p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Footer */
+.footer {
+  width: 100vw;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.85rem;
+  margin-top: auto;
+  position: relative;
+}
