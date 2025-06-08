@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/" />
-    <script>
-      // Optional: preserve full path for client-side router
-      const redirectTo = "/" + location.pathname + location.search + location.hash;
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // Redirect with full pathname and query string preserved
+      var redirectTo = window.location.origin + "/?" + 
+        "redirect=" + encodeURIComponent(
+          window.location.pathname + window.location.search + window.location.hash
+        );
       window.location.replace(redirectTo);
     </script>
   </head>
-  <body></body>
+  <body>
+    <p>Redirecting...</p>
+  </body>
 </html>
