@@ -62,6 +62,7 @@ const getPapersForLab = (labId) => {
 
 const NewResearch = () => {
   const [activeLab, setActiveLab] = useState(null);
+  const [hoveredLab, setHoveredLab] = useState(null);
 
   const toggleLab = (idx) => {
     const newLab = idx === activeLab ? null : idx;
@@ -106,6 +107,8 @@ const NewResearch = () => {
                     fill={activeLab === lab.id ? "#2563eb" : "#3b82f6"}
                     className="map-marker"
                     onClick={() => toggleLab(lab.id)}
+                    onMouseEnter={() => setHoveredLab(lab.id)}
+                    onMouseLeave={() => setHoveredLab(null)}
                     style={{ cursor: 'pointer' }}
                   />
                   <circle
@@ -116,8 +119,25 @@ const NewResearch = () => {
                     opacity="0.3"
                     className="map-marker-glow"
                     onClick={() => toggleLab(lab.id)}
+                    onMouseEnter={() => setHoveredLab(lab.id)}
+                    onMouseLeave={() => setHoveredLab(null)}
                     style={{ cursor: 'pointer' }}
                   />
+                  {/* Tooltip */}
+                  {hoveredLab === lab.id && (
+                    <g className="map-tooltip">
+                      <foreignObject
+                        x={lab.x - 100}
+                        y={lab.y - 50}
+                        width="200"
+                        height="40"
+                      >
+                        <div className="tooltip-content">
+                          {lab.lab}
+                        </div>
+                      </foreignObject>
+                    </g>
+                  )}
                 </g>
               ))}
             </svg>
