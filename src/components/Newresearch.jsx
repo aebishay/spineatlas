@@ -126,26 +126,23 @@ const NewResearch = () => {
                 </g>
               ))}
               {/* Render tooltip on top of all markers */}
-              {hoveredLab && labs.map((lab) => {
-                if (lab.id === hoveredLab) {
+              {hoveredLab && (() => {
+                const lab = labs.find(l => l.id === hoveredLab);
+                if (lab) {
                   return (
-                    <g key={`tooltip-${lab.id}`} className="map-tooltip">
-                      <foreignObject
-                        x={lab.x}
-                        y={lab.y - 55}
-                        width="400"
-                        height="50"
-                        style={{ overflow: 'visible' }}
-                      >
-                        <div className="tooltip-content" style={{ transform: 'translateX(-50%)' }}>
-                          {lab.lab}
-                        </div>
-                      </foreignObject>
-                    </g>
+                    <text
+                      key={`tooltip-${lab.id}`}
+                      x={lab.x}
+                      y={lab.y - 20}
+                      className="map-tooltip-text"
+                      textAnchor="middle"
+                    >
+                      {lab.lab}
+                    </text>
                   );
                 }
                 return null;
-              })}
+              })()}
             </svg>
           </div>
 
