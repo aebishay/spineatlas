@@ -129,16 +129,39 @@ const NewResearch = () => {
               {hoveredLab && (() => {
                 const lab = labs.find(l => l.id === hoveredLab);
                 if (lab) {
+                  // Calculate text width (rough estimate: 8px per character)
+                  const textWidth = lab.lab.length * 8;
+                  const padding = 16;
+                  const boxWidth = textWidth + padding * 2;
+                  const boxHeight = 32;
+
+                  // Adjust position if too far right (beyond x=800)
+                  let boxX = lab.x - boxWidth / 2;
+                  if (lab.x > 800) {
+                    boxX = lab.x - boxWidth - 10; // Position to the left of marker
+                  }
+
                   return (
-                    <text
-                      key={`tooltip-${lab.id}`}
-                      x={lab.x}
-                      y={lab.y - 20}
-                      className="map-tooltip-text"
-                      textAnchor="middle"
-                    >
-                      {lab.lab}
-                    </text>
+                    <g key={`tooltip-${lab.id}`}>
+                      {/* Background box */}
+                      <rect
+                        x={boxX}
+                        y={lab.y - 50}
+                        width={boxWidth}
+                        height={boxHeight}
+                        rx="8"
+                        className="map-tooltip-bg"
+                      />
+                      {/* Text */}
+                      <text
+                        x={lab.x > 800 ? boxX + boxWidth / 2 : lab.x}
+                        y={lab.y - 28}
+                        className="map-tooltip-text"
+                        textAnchor="middle"
+                      >
+                        {lab.lab}
+                      </text>
+                    </g>
                   );
                 }
                 return null;
