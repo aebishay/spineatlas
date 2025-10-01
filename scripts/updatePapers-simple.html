@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Papers - Spine Atlas</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+    .institution {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f9fafb;
+      border-radius: 8px;
+      border-left: 4px solid #2563eb;
+    }
+    .institution h3 {
+      margin: 0 0 10px 0;
+      color: #1f2937;
+    }
+    .rss-url {
+      font-size: 12px;
+      color: #6b7280;
+      word-break: break-all;
+      margin: 5px 0;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .status.pending { background: #fef3c7; color: #92400e; }
+    .status.loading { background: #dbeafe; color: #1e40af; }
+    .status.success { background: #d1fae5; color: #065f46; }
+    .status.error { background: #fee2e2; color: #991b1b; }
+    .paper-count {
+      font-size: 14px;
+      color: #059669;
+      margin-left: 10px;
+    }
+    .output {
+      margin-top: 30px;
+      padding: 20px;
+      background: #1f2937;
+      color: #fff;
+      border-radius: 8px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      max-height: 400px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      display: none;
+    }
+    .output.show { display: block; }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #1d4ed8; }
+    button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+    }
+    .copy-btn {
+      background: #059669;
+    }
+    .copy-btn:hover { background: #047857; }
+    .instructions {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Update Papers</h1>
+    <p class="subtitle">Fetch the latest publications from PubMed RSS feeds</p>
+
+    <div id="institutions">
+      <!-- Will be populated by JavaScript -->
+    </div>
+
+    <div class="actions">
+      <button id="updateBtn" onclick="updateAllPapers()">🔄 Update All Papers</button>
+      <button id="copyBtn" class="copy-btn" onclick="copyToClipboard()" style="display:none;">📋 Copy JSON Output</button>
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <div class="instructions">
+      <strong>⚠️ Note:</strong> Due to CORS restrictions, this page may not be able to fetch RSS feeds directly from PubMed.
+      If you see CORS errors, you'll need to either:
+      <ul>
+        <li>Run the Node.js script instead: <code>npm run update-papers</code></li>
+        <li>Use a browser extension to disable CORS temporarily</li>
+        <li>Use the manual process below to copy/paste the JSON</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const RSS_FEEDS = {
+      'barrow': {
+        name: 'Barrow Neurological Institute',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1fmfIeN4X5QaHfwLTMrvfbsQp6BuAvsIkzEkjuo7xIBqG4TMVB/?limit=20&utm_campaign=pubmed-2&fc=20251001143945'
+      },
+      'hopkins': {
+        name: 'Johns Hopkins University',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1pMPQVclnMM-hpDMUjT6IHHkPCzoicewaMG_03DDXT9nGoiMg3/?limit=15&utm_campaign=pubmed-2&fc=20251001144803'
+      },
+      // Add more institutions here
+    };
+
+    let allResults = {};
+
+    // Initialize the page
+    function init() {
+      const container = document.getElementById('institutions');
+      for (const [key, institution] of Object.entries(RSS_FEEDS)) {
+        const div = document.createElement('div');
+        div.className = 'institution';
+        div.innerHTML = `
+          <h3>${institution.name}</h3>
+          <div class="rss-url">${institution.url}</div>
+          <span class="status pending" id="status-${key}">⏳ Pending</span>
+          <span class="paper-count" id="count-${key}"></span>
+        `;
+        container.appendChild(div);
+      }
+    }
+
+    async function fetchRSSFeed(feedUrl, limit = 10) {
+      try {
+        const response = await fetch(feedUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+        const items = xmlDoc.querySelectorAll('item');
+        const papers = [];
+
+        for (let i = 0; i < Math.min(items.length, limit); i++) {
+          const item = items[i];
+
+          const titleElement = item.querySelector('title');
+          const title = titleElement ? titleElement.textContent.trim() : 'Untitled';
+
+          const linkElement = item.querySelector('link');
+          const link = linkElement ? linkElement.textContent.trim() : '#';
+
+          const authorElement = item.querySelector('creator, author');
+          let author = 'Unknown';
+          if (authorElement) {
+            const authorText = authorElement.textContent.trim();
+            const firstAuthor = authorText.split(',')[0].trim();
+            author = `${firstAuthor} et al.`;
+          }
+
+          const dateElement = item.querySelector('pubDate, date');
+          let date = new Date().toISOString().split('T')[0];
+          if (dateElement) {
+            const pubDate = new Date(dateElement.textContent.trim());
+            if (!isNaN(pubDate)) {
+              date = pubDate.toISOString().split('T')[0];
+            }
+          }
+
+          papers.push({ title, author, link, date });
+        }
+
+        return papers;
+      } catch (error) {
+        console.error('Error fetching RSS:', error);
+        throw error;
+      }
+    }
+
+    function updateStatus(key, status, message, count = null) {
+      const statusEl = document.getElementById(`status-${key}`);
+      const countEl = document.getElementById(`count-${key}`);
+      statusEl.className = `status ${status}`;
+      statusEl.textContent = message;
+      if (count !== null) {
+        countEl.textContent = `(${count} papers)`;
+      }
+    }
+
+    function log(message) {
+      const output = document.getElementById('output');
+      output.classList.add('show');
+      output.textContent += message + '\n';
+      output.scrollTop = output.scrollHeight;
+    }
+
+    async function updateAllPapers() {
+      const btn = document.getElementById('updateBtn');
+      const copyBtn = document.getElementById('copyBtn');
+      const output = document.getElementById('output');
+
+      btn.disabled = true;
+      output.textContent = '';
+      output.classList.add('show');
+      allResults = {};
+
+      log('🔄 Starting paper updates...\n');
+
+      for (const [key, institution] of Object.entries(RSS_FEEDS)) {
+        updateStatus(key, 'loading', '⏳ Fetching...');
+        log(`📡 Fetching ${institution.name}...`);
+
+        try {
+          const papers = await fetchRSSFeed(institution.url, 10);
+          allResults[key] = papers;
+          updateStatus(key, 'success', '✅ Success', papers.length);
+          log(`✅ Fetched ${papers.length} papers from ${institution.name}\n`);
+        } catch (error) {
+          updateStatus(key, 'error', `❌ Failed: ${error.message}`);
+          log(`❌ Error fetching ${institution.name}: ${error.message}\n`);
+        }
+      }
+
+      log('\n─────────────────────────────────');
+      log('✨ Update complete!');
+      log(`Last updated: ${new Date().toLocaleString()}`);
+      log('─────────────────────────────────\n');
+
+      // Show JSON output
+      log('\n📄 JSON Output:\n');
+      for (const [key, papers] of Object.entries(allResults)) {
+        log(`\n// ${key}Papers.json`);
+        log(JSON.stringify(papers, null, 2));
+      }
+
+      btn.disabled = false;
+      copyBtn.style.display = 'inline-block';
+    }
+
+    function copyToClipboard() {
+      const output = document.getElementById('output');
+      navigator.clipboard.writeText(output.textContent).then(() => {
+        alert('✅ Copied to clipboard!');
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>

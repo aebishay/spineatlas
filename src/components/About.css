@@ -3,12 +3,14 @@
 .about-wrapper {
   min-height: 100vh;
   background: var(--bg-gradient-section);
-  padding: var(--spacing-3xl) var(--spacing-xl);
+  padding: var(--spacing-3xl) 0;
 }
 
 .about-section {
-  max-width: 1000px;
-  margin: 0 auto var(--spacing-3xl) auto;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -21,106 +23,150 @@
 
 .about-section.intro {
   text-align: center;
-  margin-bottom: var(--spacing-2xl);
-  padding: var(--spacing-2xl);
-  background-color: var(--bg-primary);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
+  margin-bottom: var(--spacing-3xl);
+  padding: var(--spacing-3xl) var(--spacing-xl);
 }
 
 .about-section h2 {
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-weight: 800;
-  color: var(--primary-blue);
   margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .about-section h3 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  color: var(--primary-blue);
-  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
   letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: var(--spacing-md);
+}
+
+.about-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  border-radius: 2px;
 }
 
 .about-section p {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   font-weight: 400;
+}
+
+.about-section.intro p {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .about-section strong {
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Card-based sections */
+/* Remove card styling */
 .about-section:not(.intro) {
-  background-color: var(--bg-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
-  transition: all 0.3s ease;
-}
-
-.about-section:not(.intro):hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
 }
 
 .about-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .about-section ul li {
   position: relative;
-  padding-left: 2rem;
-  margin-bottom: var(--spacing-md);
-  font-size: 1.0625rem;
+  padding-left: 2.25rem;
+  font-size: 1.125rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.8;
+  font-weight: 400;
 }
 
 .about-section ul li::before {
-  content: "✓";
+  content: "→";
   position: absolute;
   left: 0;
-  top: 2px;
-  color: var(--success);
+  top: 0;
+  color: var(--primary-blue);
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .about-wrapper {
-    padding: var(--spacing-xl) var(--spacing-md);
-  }
-
-  .about-section {
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .about-section.intro {
     padding: var(--spacing-xl) 0;
   }
 
+  .about-section {
+    padding: 0 var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .about-section.intro {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
   .about-section h2 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
+  }
+
+  .about-section.intro p {
+    font-size: 1.25rem;
+  }
+
+  .about-section h3 {
+    font-size: 1.75rem;
+  }
+
+  .about-section p {
+    font-size: 1.0625rem;
+  }
+
+  .about-section ul li {
+    font-size: 1rem;
+  }
+
+  .about-section:not(.intro) {
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section h2 {
+    font-size: 2rem;
+  }
+
+  .about-section.intro p {
+    font-size: 1.125rem;
   }
 
   .about-section h3 {
     font-size: 1.5rem;
   }
 
-  .about-section:not(.intro) {
-    padding: var(--spacing-xl);
+  .about-section p {
+    font-size: 1rem;
   }
 }

@@ -7,7 +7,7 @@ import Home from './components/Home';
 import About from './components/About';
 import SeminalPapers from './components/SeminalPapers';
 import Newresearch from './components/Newresearch';
-import VideoCategories from './components/VideoCategories';
+import VideoLibraryNew from './components/VideoLibraryNew';
 import CalculatorTools from './components/tools/CalculatorTools';
 import InteractiveTools from './components/InteractiveTools';
 
@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/seminal-papers" element={<SeminalPapers />} />
           <Route path="/new-research" element={<Newresearch />} />
-          <Route path="/video-library" element={<VideoCategories />} />
+          <Route path="/video-library" element={<VideoLibraryNew />} />
           <Route path="/interactive-tools" element={<InteractiveTools />} />
           <Route path="/tools/calculators" element={<CalculatorTools />} />
           <Route path="/tools/tlics" element={<TLICSCalculator />} />

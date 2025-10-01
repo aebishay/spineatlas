@@ -1,0 +1,123 @@
+/* Video Card Component */
+.video-card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-blue);
+}
+
+.video-duration {
+  background: var(--gray-100);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+/* Content Section */
+.video-card-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex-grow: 1;
+}
+
+.video-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.video-category-badge {
+  background: var(--primary-blue);
+  color: white;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.video-subcategory {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+}
+
+.video-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: var(--spacing-sm) 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+  flex-grow: 1;
+}
+
+.video-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: auto;
+}
+
+.video-tag {
+  background: var(--gray-100);
+  color: var(--text-secondary);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-card-content {
+    padding: var(--spacing-md);
+  }
+
+  .video-title {
+    font-size: 1rem;
+  }
+
+  .video-description {
+    font-size: 0.8rem;
+  }
+}

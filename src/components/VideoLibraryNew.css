@@ -1,0 +1,312 @@
+/* Video Library New Page */
+.video-library-new {
+  min-height: 100vh;
+  background: var(--bg-gradient-section);
+  padding-bottom: var(--spacing-3xl);
+}
+
+/* Header Section - Matching original video page style */
+.video-library-header {
+  width: 100%;
+  background: var(--bg-gradient-section);
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl) 0;
+}
+
+.video-library-header-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.video-library-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-xs);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.video-library-subtitle {
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 400;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search Bar in Header */
+.video-library-header-search {
+  width: 100%;
+  max-width: 800px;
+  margin-top: var(--spacing-md);
+}
+
+.video-header-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.header-search-icon {
+  position: absolute;
+  left: var(--spacing-lg);
+  color: var(--text-secondary);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.video-header-search-input {
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 3.5rem;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  font-size: 1.0625rem;
+  background: var(--bg-primary);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.video-header-search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1), var(--shadow-lg);
+}
+
+.video-header-search-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.header-search-clear {
+  position: absolute;
+  right: var(--spacing-md);
+  background: var(--gray-200);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.header-search-clear:hover {
+  background: var(--gray-300);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+/* Main Container */
+.video-library-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+.video-library-sidebar {
+  position: relative;
+}
+
+.video-library-main {
+  min-height: 400px;
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--spacing-xl);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Empty State */
+.video-library-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl);
+  text-align: center;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  border: 2px dashed var(--border-medium);
+  min-height: 400px;
+}
+
+.empty-icon {
+  color: var(--text-tertiary);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.5;
+}
+
+.video-library-empty h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.video-library-empty p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .video-library-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .video-library-sidebar {
+    position: static;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .video-library-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .video-library-title-section {
+    width: 100%;
+  }
+
+  .video-library-stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-library-header {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .video-library-header-content {
+    padding: 0 var(--spacing-md);
+  }
+
+  .video-library-title {
+    font-size: 2.5rem;
+  }
+
+  .video-library-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .video-library-header-search {
+    max-width: 100%;
+    margin-top: var(--spacing-md);
+  }
+
+  .video-header-search-input {
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 3rem;
+    font-size: 0.9375rem;
+  }
+
+  .header-search-icon {
+    left: var(--spacing-md);
+    width: 18px;
+    height: 18px;
+  }
+
+  .video-library-container {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .video-library-title {
+    font-size: 2rem;
+  }
+
+  .video-library-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .video-header-search-input {
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 2.5rem;
+    font-size: 0.875rem;
+  }
+
+  .header-search-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .video-library-empty {
+    padding: var(--spacing-xl);
+    min-height: 300px;
+  }
+
+  .empty-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .video-library-empty h3 {
+    font-size: 1.25rem;
+  }
+
+  .video-library-empty p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Loading Animation */
+.video-grid.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Smooth transitions */
+.video-library-main {
+  transition: opacity 0.3s ease;
+}
