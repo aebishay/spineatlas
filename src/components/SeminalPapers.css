@@ -1,0 +1,210 @@
+.seminal-section {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-gradient-section);
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  box-sizing: border-box;
+}
+
+.seminal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.seminal-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+.seminal-subtitle {
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-2xl);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.paper-scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--spacing-lg) 0;
+  margin: 0 calc(-1 * var(--spacing-xl));
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) var(--gray-100);
+}
+
+.paper-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.paper-scroll-container::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+}
+
+.paper-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: var(--radius-md);
+}
+
+.paper-grid {
+  display: flex;
+  gap: var(--spacing-lg);
+  width: max-content;
+}
+
+.paper-card {
+  background-color: var(--bg-primary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+  text-align: left;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  width: 380px;
+  min-width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.paper-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-blue);
+}
+
+.paper-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 700;
+  color: var(--primary-blue);
+  line-height: 1.4;
+}
+
+.paper-card .authors {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.paper-card .summary {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+  font-weight: 400;
+}
+
+.paper-card .view-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin-top: auto;
+}
+
+/* Search Bar */
+.seminal-search {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-medium);
+  width: 100%;
+  max-width: 400px;
+  margin: var(--spacing-lg) auto var(--spacing-2xl) auto;
+  display: block;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.seminal-search:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+}
+
+/* Topic Header (e.g., "Deformity") */
+.paper-topic {
+  margin-bottom: var(--spacing-xl);
+}
+
+.topic-header {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: left;
+  margin: 0;
+  padding: var(--spacing-lg) 0;
+  color: var(--primary-blue);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border-light);
+  letter-spacing: -0.02em;
+}
+
+.topic-header:hover {
+  color: var(--primary-blue-light);
+}
+
+.toggle-icon {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--primary-blue);
+  transition: transform 0.2s ease;
+  width: 2rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .seminal-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .seminal-title {
+    font-size: 2.5rem;
+  }
+
+  .seminal-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .paper-scroll-container {
+    margin: 0 calc(-1 * var(--spacing-md));
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .paper-card {
+    width: 300px;
+    min-width: 300px;
+    padding: var(--spacing-lg);
+  }
+
+  .topic-header {
+    font-size: 1.5rem;
+  }
+
+  .seminal-search {
+    max-width: 100%;
+  }
+}

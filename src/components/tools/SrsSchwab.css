@@ -1,0 +1,116 @@
+.srs-section {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-gradient-section);
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  box-sizing: border-box;
+}
+
+.srs-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl);
+  text-align: center;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+.srs-container h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+.srs-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-2xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.srs-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  align-items: stretch;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.srs-field {
+  width: 100%;
+  text-align: left;
+}
+
+.srs-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.srs-field input[type="number"] {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  background: var(--bg-primary);
+}
+
+.srs-field input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.srs-summary {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--primary-blue);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.srs-summary strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+}
+
+.srs-summary p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .srs-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .srs-container {
+    padding: var(--spacing-xl);
+  }
+
+  .srs-container h2 {
+    font-size: 2rem;
+  }
+}
