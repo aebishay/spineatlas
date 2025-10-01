@@ -123,23 +123,29 @@ const NewResearch = () => {
                     onMouseLeave={() => setHoveredLab(null)}
                     style={{ cursor: 'pointer' }}
                   />
-                  {/* Tooltip */}
-                  {hoveredLab === lab.id && (
-                    <g className="map-tooltip">
+                </g>
+              ))}
+              {/* Render tooltip on top of all markers */}
+              {hoveredLab && labs.map((lab) => {
+                if (lab.id === hoveredLab) {
+                  return (
+                    <g key={`tooltip-${lab.id}`} className="map-tooltip">
                       <foreignObject
-                        x={lab.x - 100}
-                        y={lab.y - 50}
-                        width="200"
-                        height="40"
+                        x={lab.x}
+                        y={lab.y - 55}
+                        width="400"
+                        height="50"
+                        style={{ overflow: 'visible' }}
                       >
-                        <div className="tooltip-content">
+                        <div className="tooltip-content" style={{ transform: 'translateX(-50%)' }}>
                           {lab.lab}
                         </div>
                       </foreignObject>
                     </g>
-                  )}
-                </g>
-              ))}
+                  );
+                }
+                return null;
+              })}
             </svg>
           </div>
 
