@@ -43,10 +43,13 @@ const App = () => {
     }
   }, [location, navigate]);
 
-  // Scroll to top on route change
+  // Scroll to top on route change - ALWAYS start at top of page
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [location.pathname, location.search]);
+    window.scrollTo(0, 0);
+    // Also ensure document scroll is reset
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [location.pathname, location.search, location.hash]);
 
   return (
     <div className="app-wrapper">
