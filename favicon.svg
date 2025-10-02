@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- White background -->
+  <rect width="64" height="64" fill="white"/>
+
+  <!-- Vertebral column -->
+  <g fill="#1565C0" stroke="#0D47A1" stroke-width="1">
+    <!-- Cervical vertebrae (smaller, top) -->
+    <ellipse cx="32" cy="8" rx="6" ry="4"/>
+    <ellipse cx="32" cy="13" rx="6.5" ry="4"/>
+    <ellipse cx="32" cy="18" rx="7" ry="4"/>
+
+    <!-- Thoracic vertebrae (medium, middle) -->
+    <ellipse cx="32" cy="24" rx="7.5" ry="4.5"/>
+    <ellipse cx="32" cy="30" rx="8" ry="4.5"/>
+    <ellipse cx="32" cy="36" rx="8" ry="4.5"/>
+    <ellipse cx="32" cy="42" rx="7.5" ry="4.5"/>
+
+    <!-- Lumbar vertebrae (larger, lower) -->
+    <ellipse cx="32" cy="48" rx="9" ry="5"/>
+    <ellipse cx="32" cy="54" rx="9.5" ry="5"/>
+
+    <!-- Sacrum (bottom, wider) -->
+    <ellipse cx="32" cy="60" rx="8" ry="3.5"/>
+  </g>
+
+  <!-- Central spinal cord -->
+  <line x1="32" y1="6" x2="32" y2="61" stroke="#0D47A1" stroke-width="3"/>
+
+  <!-- Spinous processes (back projections) -->
+  <g stroke="#0D47A1" stroke-width="2" fill="none">
+    <line x1="32" y1="8" x2="27" y2="8"/>
+    <line x1="32" y1="13" x2="27" y2="13"/>
+    <line x1="32" y1="18" x2="26" y2="18"/>
+    <line x1="32" y1="24" x2="26" y2="24"/>
+    <line x1="32" y1="30" x2="26" y2="30"/>
+    <line x1="32" y1="36" x2="26" y2="36"/>
+    <line x1="32" y1="42" x2="26" y2="42"/>
+    <line x1="32" y1="48" x2="25" y2="48"/>
+    <line x1="32" y1="54" x2="25" y2="54"/>
+  </g>
+</svg>
