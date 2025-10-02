@@ -22,40 +22,41 @@ function About() {
       <section className="about-section intro">
         <h2>About The Spine Atlas</h2>
         <p>
-          <strong>The Spine Atlas</strong> is a next-generation educational platform built by spine surgeons, for spine surgeons.
-          Our mission is to simplify, organize, and modernize how spine surgery is taught and learned around the world.
+          <strong>The Spine Atlas</strong> is a comprehensive educational platform developed by spine surgeons to advance surgical education and clinical practice.
+          Our mission is to provide accessible, evidence-based resources that elevate the standard of spine surgery training worldwide.
         </p>
       </section>
 
       <section className="about-section">
         <h3>What We Offer</h3>
         <ul>
-          <li>A curated library of high-quality operative videos with step-by-step commentary</li>
-          <li>Annotated reviews of landmark and emerging spine literature</li>
-          <li>Categorized surgical approaches by region and pathology</li>
-          <li>Visual summaries of complex deformity corrections and techniques</li>
-          <li>A platform to showcase contributions from leading spine centers</li>
+          <li>Expertly curated operative video library with comprehensive step-by-step surgical guidance</li>
+          <li>Critical analysis and annotation of seminal and contemporary spine surgery literature</li>
+          <li>Systematically organized surgical approaches categorized by anatomical region and pathology</li>
+          <li>Detailed visual instruction for complex spinal deformity correction and advanced techniques</li>
+          <li>Collaborative platform highlighting contributions from premier spine surgery institutions</li>
         </ul>
       </section>
 
       <section className="about-section">
         <h3>Why It Matters</h3>
-        <p>Spine surgery is rapidly evolving, yet traditional educational resources remain fragmented, outdated, or inaccessible.
-        The Spine Atlas addresses this gap by offering an intuitive, visually rich, and open-access platform tailored to the needs
-        of modern spine surgeons and trainees.</p>
+        <p>As spine surgery continues to advance rapidly, educational resources must evolve to meet the demands of contemporary practice.
+        The Spine Atlas addresses existing gaps in surgical education by providing a streamlined, evidence-based platform that integrates
+        essential knowledge and technical instruction in an accessible, user-centered format.</p>
       </section>
 
       <section className="about-section">
         <h3>Who It's For</h3>
-        <p>Whether you're a resident learning the basics, a fellow refining technique, or an attending surgeon seeking new ideas,
-        The Spine Atlas provides trusted, concise resources to help you operate with clarity and confidence.</p>
+        <p>The Spine Atlas serves surgeons at all levels of training and practice—from residents establishing foundational knowledge,
+        to fellows advancing technical proficiency, to attending surgeons seeking continuing education and innovative approaches.
+        Our platform delivers authoritative, peer-reviewed content to support informed clinical decision-making and surgical excellence.</p>
       </section>
 
       <section className="about-section">
         <h3>Our Vision</h3>
-        <p>We believe surgical education should be efficient, engaging, and global. Our long-term vision is to become the go-to
-        digital atlas for spine surgeons worldwide—highlighting contributions from every major center and elevating the standard
-        of care through better training.</p>
+        <p>We are committed to establishing The Spine Atlas as the premier global resource for spine surgery education.
+        By fostering collaboration among leading institutions and promoting knowledge exchange across international borders,
+        we aim to advance surgical training standards and ultimately improve patient outcomes through enhanced practitioner expertise.</p>
       </section>
     </div>
   );

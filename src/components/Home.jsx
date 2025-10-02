@@ -11,7 +11,7 @@ export default function Home() {
       <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title">The Spine Atlas</h1>
-          <p className="hero-subtitle">Master Operative Spine Surgery</p>
+          <p className="hero-subtitle">Advancing Excellence in Operative Spine Surgery</p>
           <Link to="/about" className="hero-button">Learn More</Link>
         </div>
       </section>
@@ -22,17 +22,17 @@ export default function Home() {
           <Link to="/seminal-papers" className="card">
             <BookOpen className="card-icon" />
             <h2>Seminal Papers</h2>
-            <p>Read the classics that shaped spine surgery and continue to guide modern technique.</p>
+            <p>Access foundational literature that has defined modern spine surgery practice and continues to inform evidence-based decision-making.</p>
           </Link>
           <Link to="/video-library" className="card">
             <Video className="card-icon" />
             <h2>Surgical Videos</h2>
-            <p>Watch curated, high-yield operations annotated and optimized for learning.</p>
+            <p>Explore expertly curated operative videos with detailed annotations designed to enhance surgical education and technique refinement.</p>
           </Link>
           <Link to="/interactive-tools" className="card">
             <Calculator className="card-icon" />
             <h2>Interactive Tools</h2>
-            <p>Score fractures, simulate outcomes, and plan surgeries with ease.</p>
+            <p>Utilize clinical calculators and classification systems to support diagnostic accuracy and surgical planning.</p>
           </Link>
         </div>
       </section>
@@ -42,16 +42,16 @@ export default function Home() {
   <h2 className="spotlight-title">Why The Spine Atlas?</h2>
   <div className="spotlight-grid">
     <div className="spotlight-item">
-      <strong>By surgeons:</strong> Everything is designed with operative relevance in mind.
+      <strong>Surgeon-developed:</strong> Created by spine surgeons to ensure clinical relevance and operative applicability.
     </div>
     <div className="spotlight-item">
-      <strong>Case-based:</strong> Real-world examples anchor every tool and video.
+      <strong>Evidence-based:</strong> All content is grounded in peer-reviewed literature and real-world clinical experience.
     </div>
     <div className="spotlight-item">
-      <strong>Multi-level learning:</strong> Students, residents, and attendings all benefit.
+      <strong>Comprehensive education:</strong> Resources tailored for medical students, residents, fellows, and attending surgeons.
     </div>
     <div className="spotlight-item">
-      <strong>One hub:</strong> No more Googling. Everything you need is here.
+      <strong>Centralized platform:</strong> A unified resource consolidating essential spine surgery education in one accessible location.
     </div>
   </div>
 </section>
