@@ -115,7 +115,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .about-wrapper {
-    padding: var(--spacing-xl) 0;
+    padding: calc(var(--spacing-3xl) + 60px) 0 var(--spacing-xl) 0;
   }
 
   .about-section {
@@ -124,7 +124,7 @@
   }
 
   .about-section.intro {
-    padding: var(--spacing-2xl) var(--spacing-md);
+    padding: 0 var(--spacing-md) var(--spacing-2xl) var(--spacing-md);
   }
 
   .about-section h2 {

@@ -176,7 +176,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .seminal-section {
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: calc(var(--spacing-3xl) + 60px) var(--spacing-md) var(--spacing-xl) var(--spacing-md);
   }
 
   .seminal-title {

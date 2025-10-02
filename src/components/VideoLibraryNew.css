@@ -221,7 +221,7 @@
 
 @media (max-width: 768px) {
   .video-library-header {
-    padding: var(--spacing-xl) 0;
+    padding: calc(var(--spacing-3xl) + 60px) 0 var(--spacing-xl) 0;
   }
 
   .video-library-header-content {

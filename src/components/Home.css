@@ -301,29 +301,46 @@ html, body {
  * Mobile Responsiveness
  * ─────────────────────────────────────── */
 @media (max-width: 768px) {
+  .home-wrapper {
+    scroll-snap-type: none;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+    height: auto;
+    padding: calc(60px + var(--spacing-xl)) var(--spacing-md) var(--spacing-2xl) var(--spacing-md);
+    scroll-snap-align: none;
+  }
+
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     white-space: normal;
     animation: none;
     width: 100%;
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
   }
 
-  .hero-section {
-    padding: 0 var(--spacing-md);
+  .hero-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 
   .card-section {
-    padding: var(--spacing-xl) var(--spacing-md);
+    min-height: auto;
+    height: auto;
+    padding: var(--spacing-3xl) var(--spacing-md);
+    scroll-snap-align: none;
   }
 
   .overview {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
   }
 
   .card {
@@ -333,7 +350,10 @@ html, body {
   }
 
   .spotlight {
-    padding: var(--spacing-xl) var(--spacing-md);
+    min-height: auto;
+    height: auto;
+    padding: var(--spacing-3xl) var(--spacing-md);
+    scroll-snap-align: none;
   }
 
   .spotlight-title {
@@ -341,12 +361,12 @@ html, body {
   }
 
   .spotlight-item {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     padding-left: var(--spacing-md);
   }
 
   .spotlight-item strong {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 }
 
